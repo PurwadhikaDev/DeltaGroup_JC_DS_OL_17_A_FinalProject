@@ -1,39 +1,29 @@
-# 🚗 Saudi Used Cars Price Prediction
+# 🚗 Prediksi Harga Mobil Bekas di Arab Saudi
 
-A machine learning project to predict the price of used cars in Saudi Arabia based on vehicle features such as brand, mileage, year, engine size, transmission type, and more.
-
----
-
-## 📌 Project Summary
-
-This project aims to develop a predictive model that estimates the fair market price of used cars listed in Saudi Arabia. By leveraging regression-based machine learning models, the goal is to assist:
-
-- Individual sellers in pricing their vehicles fairly
-- Dealers in managing inventory pricing strategies
-- Online marketplaces to suggest reasonable price ranges
-- Buyers in evaluating whether a listed price is fair
-
-The model is trained on a cleaned dataset from syarah.com and deployed via Streamlit for public interaction.
+> ⚠️ **Disclaimer**  
+> Dalam pembuatan grafik pada proyek ini, tim menggunakan **library Plotly** untuk menghasilkan visualisasi yang lebih **interaktif**. Namun, perlu diketahui bahwa grafik berbasis Plotly **tidak dapat ditampilkan secara langsung di halaman GitHub**.  
+> Untuk melihat grafik interaktif tersebut, Anda perlu membuka file notebook menggunakan environment yang mendukung rendering Plotly seperti **Visual Studio Code**, **Jupyter Notebook**, atau **JupyterLab**.
 
 ---
 
-## 📊 Exploratory Data Analysis & Cleaning
+## 📌 Ringkasan Proyek
 
-- Removed 2,526 rows with `Price = 0`
-- Dropped irrelevant columns: `Negotiable`, `Region` (redundant)
-- Handled outliers using domain knowledge & IQR method:
-  - Kept `Price` in range [5,000 – 440,000 SAR]
-  - Removed extreme `Mileage` and `Year` values
-- Standardized categorical & numeric features:
-  - `TargetEncoder` for high-cardinality categorical columns
-  - `OrdinalEncoder` for low-cardinality features
-  - `StandardScaler` for numeric features
+Proyek ini bertujuan untuk membangun model prediksi harga mobil bekas di Arab Saudi berdasarkan fitur kendaraan seperti merek, tahun, kilometer, ukuran mesin, jenis transmisi, dan lainnya. Model dilatih menggunakan dataset dari syarah.com dan di-deploy melalui Streamlit untuk interaksi publik.
 
 ---
 
-## 🧠 Modeling Approach
+## 📊 Eksplorasi dan Pembersihan Data
 
-We applied 10 different regression algorithms:
+- Menghapus 2.526 baris dengan `Price = 0`
+- Menghapus kolom tidak relevan: `Negotiable`, `Region`
+- Menangani outlier menggunakan pengetahuan domain dan metode IQR
+- Standardisasi fitur kategorikal dan numerik menggunakan `TargetEncoder`, `OrdinalEncoder`, dan `StandardScaler`
+
+---
+
+## 🧠 Pendekatan Modeling
+
+Model regresi yang digunakan:
 
 - Linear Regression, Ridge, Lasso, ElasticNet
 - KNN Regressor, Decision Tree Regressor
@@ -42,77 +32,73 @@ We applied 10 different regression algorithms:
 - Support Vector Regressor
 - XGBoost Regressor
 
-**Evaluation Metrics**:
-- RMSE (Root Mean Squared Error)
-- MAE (Mean Absolute Error)
-- MAPE (Mean Absolute Percentage Error)
-- R² Score
+**Metrik Evaluasi**:
+- RMSE, MAE, MAPE, R² Score
 
 ---
 
-## 🏆 Best Model
+## 🏆 Model Terbaik
 
 | Model               | MAPE (%) |
 |---------------------|----------|
 | Tuned XGBoost       | **11.95** |
 | Tuned Random Forest | 12.44    |
 
-Tuned XGBoost Regressor achieved the lowest prediction error on the test set and was selected as the final model.
-
 ---
 
 ## 🔧 Hyperparameter Tuning (Optuna)
 
-- Used `Optuna` with 50 trials and `RepeatedKFold` cross-validation
-- Objective: Minimize MAPE
-- XGBoost parameters tuned: `n_estimators`, `max_depth`, `learning_rate`, `subsample`, `colsample_bytree`, `gamma`, `reg_alpha`, `reg_lambda`, `min_child_weight`
+- Menggunakan 50 trials dengan RepeatedKFold
+- Objective: Minimisasi MAPE
+- Parameter XGBoost yang dituning: `n_estimators`, `max_depth`, `learning_rate`, `subsample`, `colsample_bytree`, `gamma`, `reg_alpha`, `reg_lambda`, `min_child_weight`
 
 ---
 
-## 🗂️ File Structure
+## 🗂️ Struktur File
 
 ```
 📦 Saudi-Used-Cars-Price-Prediction
-├── Final Project v5.py        # Full Jupyter notebook in script form
-├── README.md                  # Project documentation
-├── best_xgb_model.pkl         # Final trained model
-├── target_encoder.pkl         # Encoder for 'Type', 'Color', 'Make'
-├── ordinal_encoder.pkl        # Encoder for 'Fuel_Type', 'Gear_Type', etc.
-├── scaler.pkl                 # Scaler for numeric features
+├── Final Project v5.py        # File proyek dalam bentuk script
+├── README.md                  # Dokumentasi proyek
+├── best_xgb_model.pkl         # Model final XGBoost
+├── target_encoder.pkl         # Encoder untuk 'Type', 'Color', 'Make'
+├── ordinal_encoder.pkl        # Encoder untuk 'Fuel_Type', 'Gear_Type', dll
+├── scaler.pkl                 # Scaler untuk fitur numerik
 ```
 
 ---
 
-## 🌐 Live Demo
+## 🌐 Demo Aplikasi
 
-- **Streamlit App** (try out the prediction):  
+- **Streamlit App** (uji prediksi harga):  
   👉 https://saudi-arabia-used-cars-price-prediction.streamlit.app/
 
-- **Tableau Dashboard** (EDA Visualization):  
+- **Dashboard Tableau (Visualisasi EDA)**:  
   👉 https://public.tableau.com/app/profile/evelio.excellenta/viz/MobilBekasArabSaudiAnalysis/Story2
 
 ---
 
-## 👥 Contributors
+## 👥 Kontributor
 
 - **Muhammad Daffa Hilmy**
 - **Evelio Excellenta**
 
 ---
 
-## 📌 Business Impact
+## 📌 Dampak Bisnis
 
-With this model, we can:
-- Predict fair prices for used cars
-- Reduce price uncertainty and negotiation time
-- Improve user confidence and satisfaction on digital marketplaces
-- Assist financial institutions in valuation and loan decisions
+Model ini dapat digunakan untuk:
+- Memprediksi harga wajar mobil bekas
+- Mengurangi ketidakpastian harga dan waktu negosiasi
+- Meningkatkan kepercayaan pengguna pada platform digital
+- Membantu lembaga keuangan dalam penilaian dan keputusan pembiayaan
 
 ---
 
-## 📈 Future Improvements
+## 📈 Pengembangan Selanjutnya
 
-- Add condition-based features (exterior, interior, service history)
-- Include regional market data and location-specific adjustments
-- Apply SHAP or LIME for model explainability
-- Deploy to cloud or integrate with real-time scraping system
+- **Perluasan Dataset:** Integrasikan data tambahan seperti kondisi kendaraan, riwayat servis, dan ulasan pasar untuk meningkatkan cakupan dan representativitas.
+- **Update Berkala:** Lakukan retraining dan validasi model secara periodik untuk memastikan model tetap akurat seiring dengan perubahan tren pasar.
+- **Integrasi Umpan Balik:** Kembangkan mekanisme feedback loop dari transaksi nyata untuk terus mengkalibrasi dan meningkatkan performa model.
+- **Eksplorasi Metode Lanjutan:** Pertimbangkan penggunaan metode hybrid atau deep learning untuk menangani kompleksitas dan non-linearitas yang mungkin tidak tertangkap oleh model saat ini.
+- **Penambahan Fitur Kontekstual:** Tambahkan fitur-fitur yang lebih kontekstual seperti indikator ekonomi, lokasi penjualan, atau tren musiman untuk meningkatkan prediktabilitas.
