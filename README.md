@@ -58,7 +58,7 @@ Model regresi yang digunakan:
 
 ```
 📦 Saudi-Used-Cars-Price-Prediction
-├── Final Project v5.py        # File proyek dalam bentuk script
+├── Final Project.py        # File proyek dalam bentuk script
 ├── README.md                  # Dokumentasi proyek
 ├── best_xgb_model.pkl         # Model final XGBoost
 ├── target_encoder.pkl         # Encoder untuk 'Type', 'Color', 'Make'
