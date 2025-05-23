@@ -2,7 +2,7 @@
 
 > ⚠️ **Disclaimer**  
 > Dalam pembuatan grafik pada proyek ini, tim menggunakan **library Plotly** untuk menghasilkan visualisasi yang lebih **interaktif**. Namun, perlu diketahui bahwa grafik berbasis Plotly **tidak dapat ditampilkan secara langsung di halaman GitHub**.  
-> Untuk melihat grafik interaktif tersebut, Anda perlu membuka file notebook menggunakan environment yang mendukung rendering Plotly seperti **Visual Studio Code**, **Jupyter Notebook**, atau **JupyterLab**.
+> Untuk melihat grafik interaktif tersebut, Anda perlu membuka file notebook menggunakan environment yang mendukung rendering Plotly seperti **Visual Studio Code**.
 
 ---
 
